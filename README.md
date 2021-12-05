@@ -19,19 +19,19 @@
 - has_many :orders
 
 
-## テーブルitems
+## itemsテーブル
 
-| Column            | Type       | Options                        |
-|-------------------|------------|--------------------------------|
-| item_name         | string     | null: false                    |
-| describe          | text       | null: false                    |
-| category          | string     | null: false                    |
-| status            | string     | null: false                    |
-| delivery_fee_load | string     | null: false                    |
-| shipment_source   | string     | null: false                    |
-| sending_date      | string     | null: false                    |
-| price             | integer    | null: false                    |
-| user              | references | null: false, foreign_key: true |
+| Column               | Type       | Options                        |
+|----------------------|------------|--------------------------------|
+| item_name            | string     | null: false                    |
+| describe             | text       | null: false                    |
+| category_id          | integer    | null: false                    |
+| status_id            | integer    | null: false                    |
+| delivery_fee_load_id | integer    | null: false                    |
+| prefecture_id        | integer    | null: false                    |
+| sending_date_id      | integer    | null: false                    |
+| price                | integer    | null: false                    |
+| user                 | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -57,12 +57,12 @@
 
 | Column         | Type       | Options                       |
 |----------------|------------|-------------------------------|
-| postal_code    | integer    | null: false                   |
-| prefecture     | string     | null: false                   |
+| postal_code    | string     | null: false                   |
+| prefecture_id  | integer    | null: false                   |
 | municipalities | string     | null: false                   |
 | house_number   | string     | null: false                   |
 | building_name  | string     |                               |
-| tel_number     | integer    | null: false                   |
+| tel_number     | string     | null: false                   |
 | order          | references | null: false foreign_key: true |
 
 ### Association
