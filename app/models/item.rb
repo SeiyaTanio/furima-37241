@@ -11,7 +11,7 @@ class Item < ApplicationRecord
       validates :sending_date_id
     end
   end
-  with_options presence: true, format: { with: /A[0-9]+\z/ } do
+  with_options presence: true, format: { with: /\A[0-9]+\z/ } do
     validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 },
                       presence: { message: "can't be blank" }
   end
@@ -19,8 +19,10 @@ class Item < ApplicationRecord
   belongs_to :user
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
-  belongs_to :satatus
+  belongs_to :status
   belongs_to :delivery_fee_load
   belongs_to :prefecture
   belongs_to :sending_date
+
+  has_one_attached :image
 end
