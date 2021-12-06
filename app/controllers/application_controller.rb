@@ -12,11 +12,11 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, key: [:nickname])
-    devise_parameter_sanitizer.permit(:sign_up, key: [:kanji_family_name])
-    devise_parameter_sanitizer.permit(:sign_up, key: [:kanji_first_name])
-    devise_parameter_sanitizer.permit(:sign_up, key: [:kana_family_name])
-    devise_parameter_sanitizer.permit(:sign_up, key: [:kana_first_name])
-    devise_parameter_sanitizer.permit(:sign_up, key: [:birth_date])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:kanji_family_name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:kanji_first_name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:kana_family_name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:kana_first_name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:birth_date])
   end
 end

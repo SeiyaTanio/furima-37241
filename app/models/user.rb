@@ -5,10 +5,19 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname, presence: true
-  validates :kanji_family_name, presence: true
-  validates :kanji_first_name, presence: true
-  validates :kana_family_name, presence: true
-  validates :kana_first_name, presence: true
   validates :birth_date, presence: true
-  validates :encrypted_password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i }
+
+  with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: 'is invalid. Input full-width characters' } do
+    validates :kanji_family_name
+    validates :kanji_first_name
+  end
+
+  with_options presence: true, format: { with: /\A[ァ-ヶ]+\z/, message: 'is invalid. Input full-width katakana characters' } do
+    validates :kana_family_name
+    validates :kana_first_name
+  end
+
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  validates_format_of :password, with: PASSWORD_REGEX, message: 'is invalid. Include both letters and numbers'
+
 end
