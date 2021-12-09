@@ -9,7 +9,7 @@ class OrderAddress
     validates :prefecture_id
     validates :municipalities
     validates :house_number
-    validates :tel_number, numericality: {only_integer: true, message: 'is invalid'}, format: {with: /\A\d{10,11}\z/}
+    validates :tel_number, numericality: {only_integer: true}, format: {with: /\A\d{10,11}\z/}
     validates :token
   end
 
