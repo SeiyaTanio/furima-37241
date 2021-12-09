@@ -11,7 +11,6 @@ class OrderAddress
     validates :house_number
     validates :tel_number, numericality: {only_integer: true}, format: {with: /\A\d{10,11}\z/}
     validates :token
-    validates :order_id
   end
 
   def save
